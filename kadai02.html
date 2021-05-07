@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WA32 課題02: JavaScriptの練習</title>
+    </head>
+
+    <body>
+        <p>期限: 2021/05/14</p>
+        <p>担当: 廣澤 和成</p>
+        <p>
+            自分だけのカウントをするボタンを作ろう！
+        </p>
+
+        <button class="button">
+            どんな法則かわかるかな？
+        </button>
+
+        <script>
+            let count = 0
+            document.querySelector(".button").addEventListener("click", function () {
+                const button = document.querySelector(".button")
+                count = count + 1
+                button.innerHTML = count
+            })
+        </script>
+    </body>
+
+</html>

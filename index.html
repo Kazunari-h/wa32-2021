@@ -9,7 +9,47 @@
     </head>
 
     <body>
+        <h1>WA32の練習</h1>
+        <p id="text1">できるかな？</p>
+        <p id="text2">できるかな？</p>
+        <p id="text3">できるかな？</p>
 
+        <button class="button">ボタンを推してね</button>
+
+        <script>
+
+            const text1 = document.getElementById("text1")
+            text1.addEventListener("click", function () {
+                text1.innerText = "JavaScriptからの書き込み"
+                text1.style.backgroundColor = "#2deeb0"
+                text1.style.padding = "1rem"
+                text1.style.margin = "1rem 0"
+                text1.style.borderRadius = "0.5rem"
+            })
+
+            document.getElementById("text2").innerText = "お寿司食べたい"
+            document.getElementById("text3").innerText = "みんな楽しんでる？"
+
+            let count = 0
+            document.querySelector(".button").addEventListener("click", function () {
+                const button = document.querySelector(".button")
+                count = count + 1
+                if (count % 44 === 0) {
+                    // もし 15の倍数の時 FizzBuzz
+                    button.innerText = "FizzBuzz"
+                } else if (count % 11 === 0) {
+                    // もし 3の倍数の時  Fizz
+                    button.innerText = "Fizz"
+                } else if (count % 4 === 0) {
+                    // もし 5の倍数の時  Buzz
+                    button.innerText = "Buzz"
+                } else {
+                    button.innerText = count
+                }
+            })
+
+
+        </script>
     </body>
 
 </html>
