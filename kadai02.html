@@ -6,25 +6,43 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WA32 課題02: JavaScriptの練習</title>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.js" defer></script>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+            integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ=="
+            crossorigin="anonymous"></script>
     </head>
 
     <body>
-        <p>期限: 2021/05/14</p>
-        <p>担当: 廣澤 和成</p>
-        <p>
-            自分だけのカウントをするボタンを作ろう！
-        </p>
+        <div class="w-full p-8">
+            <div class="p-4 rounded border my-4">
+                <p>期限: 2021/05/14</p>
+                <p>担当: 廣澤 和成</p>
+                <p>
+                    自分だけのカウントをするボタンを作ろう！
+                </p>
+                <p>
+                    できたらフォルダ名「kadai02_出席番号_名前」にしてZipにしてGoogleドライブへアップロード！
+                </p>
+            </div>
 
-        <button class="button">
-            どんな法則かわかるかな？
-        </button>
+            <button class="button py-2 px-4 border bg-green-500 text-white text-bold rounded">
+                どんな法則かわかるかな？
+            </button>
+
+        </div>
 
         <script>
             let count = 0
             document.querySelector(".button").addEventListener("click", function () {
                 const button = document.querySelector(".button")
-                count = count + 1
-                button.innerHTML = count
+                count = count * ((-1) ** count) + 4
+
+                if (count % 7 === 0) {
+                    button.innerHTML = "7の倍数です"
+                } else {
+                    button.innerHTML = count
+                }
             })
         </script>
     </body>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>kadai04</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <div class="p-4 m-4">
+            <p>期限: 2021/06/04</p>
+            <p>担当: 廣澤 和成</p>
+            <p>
+                Ajaxで郵便番号検索を作ろう
+
+                ① 入力し、リクエストが送られて、郵便番号が表示されること<br>
+                ② できたらフォルダ名「kadai04_出席番号_名前」にいれてZipにしてGoogleドライブへアップロード！<br>
+                ③ https://drive.google.com/drive/folders/1v57ADKhWBUm2nyzzwP6obsomXsEQmo34?usp=sharing
+            </p>
+        </div>
+
+        <div>
+            <div class="p-4 m-4">
+                <input type="number" placeholder="1510001" minlength="7" maxlength="7"
+                    class="search px-4 py-2 border border-purple-500 rounded mr-2 outline-none">
+                <button class="button px-4 py-2 rounded bg-purple-700 text-white">
+                    検索する
+                </button>
+
+            </div>
+
+            <ul class="result p-4 m-4"></ul>
+        </div>
+
+        <script>
+            // オブジェクト
+
+            // const animal = {
+            //     name: "ゴンザレス",
+            //     age: 11,
+            //     weight: 6,
+            //     run() {
+            //         console.log("走ります");
+            //     }
+            // }
+
+            // JSON JavaScriptのオブジェクト型のデータ構造
+
+            document.querySelector(".button").addEventListener("click", () => {
+                const postCode = document.querySelector(".search").value
+                axios
+                    .get(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${postCode}`)
+                    .then(response => {
+                        const result = document.querySelector(".result")
+                        // タグ作成
+                        const li = document.createElement("li")
+                        const results = response.data.results[0]
+                        li.innerText = `${results.address1}${results.address2}${results.address3}`
+                        // 子要素として追加する
+                        result.appendChild(li);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            })
+
+            // let promise = new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         // 成功した時に実行する関数
+            //         resolve("引数がいれれるよｓ")
+
+            //         // 失敗した時に実行する関数
+            //         reject("エラーが発生")
+            //     }, 4000)
+            // })
+
+            // promise
+            //     .then(val => {
+            //         console.log(`1: ${val}`);
+            //         console.log(new Date());
+            //     })
+            //     .catch(error => {
+            //         console.log(`2: ${error}`);
+            //     })
+            // console.log("3: 実行されるのか？");
+            // console.log(new Date());
+
+        </script>
+
+    </body>
+
+</html>

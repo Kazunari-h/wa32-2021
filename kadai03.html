@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>kadai03</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="p-4 m-4">
+            <p>期限: 2021/05/21</p>
+            <p>担当: 廣澤 和成</p>
+            <p>
+                キーワード検索を作ろう
+            </p>
+            <p>
+                できたらフォルダ名「kadai03_出席番号_名前」にいれてZipにしてGoogleドライブへアップロード！
+                GoogleDriveのURLは次回共有！
+
+                https://drive.google.com/drive/folders/1Jm6LriwuQ1pzWOZvDvMNlkZhPjDhnwfq
+            </p>
+        </div>
+
+        <div>
+            <div class="p-4 m-4">
+                <input type="text" class="search px-4 py-2 border border-purple-500 rounded mr-2 outline-none">
+                <button class="button px-4 py-2 rounded bg-purple-700 text-white">
+                    検索する
+                </button>
+
+            </div>
+
+            <ul class="result p-4 m-4"></ul>
+        </div>
+
+        <script>
+
+            // inputに入力したキーワードで検索した結果をulに入れる
+
+            // 関数
+            // function 関数名(引数) { 処理 }
+            // 無名関数
+            // function (引数) { 処理 }
+            // アロー関数
+            // (引数) => { 処理 }
+
+            const foods = [
+                "アボカド",
+                "ステーキ",
+                "豆腐",
+                "ガパオライス",
+                "トゥンカロン",
+                "アヒージョ",
+                "クレープ",
+                "ユッケジャンクッパ",
+                "ガレット",
+                "ケバブ",
+                "蒙古タンメン中本",
+                "一蘭",
+                "スペアリブ",
+                "ポタージュ",
+                "マッサマンカレー",
+                "テリーヌ",
+                "フムス",
+                "シュールストレミング",
+                "すき焼き",
+                "お寿司",
+                "タコス",
+                "豚まん",
+                "あんまん",
+                "イカリング",
+                "ビーフストロガノフ",
+                "ローストビーフ",
+                "カレーライス",
+                "フィッシュ＆チップス",
+                "スターゲイジー・パイ",
+                "ボロネーゼ",
+                "ポトフ",
+                "キッシュ",
+                "カルパッチョ",
+                "ホットドッグ",
+                "スターゲイジー・パイ",
+                "揚げマーズバー",
+                "タコライス",
+                "テリーヌ",
+                "エッグベネディクト",
+                "ちゃんぽん",
+                "ガーリックシュリンプ",
+                "プロシュート",
+                "ポーチドエッグ",
+                "ピータン",
+                "エスカルゴブルギニョン",
+                "カルツォーネ",
+                "フライドポテト",
+                "マルゲリータ",
+                "炙りカルビ",
+                "中落ちカルビ",
+                "ミネストローネ"
+            ]
+
+            const ul = document.querySelector(".result")
+
+            const clickEvent = () => {
+                ul.innerHTML = ""
+
+                const keyword = document.querySelector(".search").value
+                if (!keyword) {
+                    return
+                }
+
+                for (const food of foods) {
+                    // indexOf 引数で指定した文字が含めれていたら位置を返す。
+                    // 含まれていない場合-1を返す
+                    if (food.indexOf(keyword) !== -1) {
+                        // li を作る
+                        const li = document.createElement("li")
+                        // liのテキストをfoodの中身にする
+                        li.innerText = food
+
+                        // ulにliを追加する
+                        ul.appendChild(li)
+                    }
+                }
+            }
+
+            document
+                .querySelector(".button")
+                .addEventListener("click", clickEvent)
+
+            document
+                .querySelector(".search")
+                .addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        clickEvent()
+                    }
+                })
+
+        </script>
+
+    </body>
+
+</html>
